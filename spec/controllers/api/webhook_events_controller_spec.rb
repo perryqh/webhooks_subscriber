@@ -35,7 +35,7 @@ RSpec.describe Api::WebhookEventsController, type: :controller do
     end
 
     it 'creates a webhook-event' do
-      expect { poster }.to change { WebhookEvent.count }.by(1)
+      expect { poster }.to change(WebhookEvent, :count).by(1)
     end
 
     it 'extracts the event_type' do
