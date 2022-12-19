@@ -1,4 +1,6 @@
-<div id="webhook-events">
+<div id="webhook_events">
+  <%= turbo_stream_from subscriber, :webhook_events %>
+
   <% if subscriber.webhook_events.empty? %>
     Waiting on your first webhook event
   <% else %>
