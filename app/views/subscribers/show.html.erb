@@ -1,13 +1,4 @@
-<div class="row">
-  <div class="col-2">
-    Subscriber Name
-  </div>
-  <div class="col-2">
-    <span class="fw-bold">
-      <%= @subscriber.name %>
-    </span>
-  </div>
-</div>
+
 <div class="row mt-2" data-controller="clipboard">
   <div class="col-2">
     Your unique URL
@@ -24,6 +15,7 @@
     </button>
   </div>
 </div>
-<div id='event-wrapper'>
+<div id='event-wrapper' class="m-5 text-start">
+  <h4><%= @subscriber.name %> Events</h4>
   <%= render 'webhook_events', subscriber: @subscriber %>
 </div>
