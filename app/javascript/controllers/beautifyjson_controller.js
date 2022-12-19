@@ -1,11 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
-import { prettyPrintJson } from 'pretty-print-json';
+import Beautify from "json-format-highlight"
 export default class extends Controller {
     static targets = [ "payloadJson" ]
     connect() {
-        console.log(this.payloadJsonTarget.dataset.actualJson)
-        // const html = prettyPrintJson.toHtml(data);
+        var beauty = Beautify(this.payloadJsonTarget.dataset.actualJson)
+        console.log(beauty)
+        this.payloadJsonTarget.innerHTML = beauty
     }
 }
-
-// https://www.npmjs.com/package/json-beautify
