@@ -1,4 +1,5 @@
-<div id="<%= dom_id(webhook_event) %>">
+<div id="<%= dom_id(webhook_event) %>" data-controller="beautifyjson">
+  <span data-beautifyjson-target="payloadJson" data-actual-json="<%= webhook_event.payload.to_json %>"/>
   <div>
     <%= webhook_event.payload %>
   </div>

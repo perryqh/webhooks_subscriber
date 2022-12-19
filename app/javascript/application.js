@@ -4,3 +4,4 @@ import "controllers"
 import "bootstrap"
 import LocalTime from 'local-time'
 LocalTime.start()
+import "json-beautify"
