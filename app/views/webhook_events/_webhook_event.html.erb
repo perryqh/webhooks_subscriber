@@ -1,9 +1,7 @@
-<div id="<%= dom_id(webhook_event) %>" data-controller="beautifyjson">
-  <span data-beautifyjson-target="payloadJson" data-actual-json="<%= webhook_event.payload.to_json %>"/>
-  <div>
-    <%= webhook_event.payload %>
-  </div>
-  <div>
-    <%= time_tag webhook_event.created_at, "data-local": "time-or-date" %>
+<div class="row bg-white p-3 mt-3" id="<%= dom_id(webhook_event) %>" data-controller="beautifyjson">
+  <small class="text-muted">
+    <%= time_tag webhook_event.created_at, webhook_event.created_at.localtime.strftime('%Y-%M-%d %H:%M.%S %Z') %>
+  </small>
+  <div data-beautifyjson-target="payloadJson" data-actual-json="<%= webhook_event.payload.to_json %>">
   </div>
 </div>
