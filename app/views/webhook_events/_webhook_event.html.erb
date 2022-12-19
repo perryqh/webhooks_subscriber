@@ -1,0 +1,8 @@
+<div id="<%= dom_id(webhook_event) %>">
+  <div>
+    <%= webhook_event.payload %>
+  </div>
+  <div>
+    <%= time_tag webhook_event.created_at, "data-local": "time-ago" %>
+  </div>
+</div>

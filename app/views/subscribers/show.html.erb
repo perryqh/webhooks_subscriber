@@ -2,7 +2,7 @@
   <div class="col-2">
     Subscriber Name
   </div>
-  <div class="col-1">
+  <div class="col-2">
     <span class="fw-bold">
       <%= @subscriber.name %>
     </span>
@@ -18,47 +18,12 @@
   <div class="col-auto mx-0 px-0">
     <button data-action="clipboard#copy" type="button" class="btn btn-default btn-copy js-tooltip js-copy mx-0 px-0" data-toggle="tooltip" data-placement="bottom" data-copy="john.doe@email.com" title="Copy to clipboard">
       <!-- icon from google's material design library -->
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z"/>
+      </svg>
     </button>
   </div>
 </div>
-
-<table class="table mt-5">
-  <thead>
-  <tr>
-    <th scope="col text-start">Event</th>
-    <th scope="col">Created At</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% if @subscriber.webhook_events.empty? %>
-    <td colspan="2">Waiting on your first webhook event</td>
-  <% else %>
-    <% @subscriber.webhook_events.order('created_at DESC').each do |webhook_event| %>
-      <tr><td><div class="pretty-json" data-json="<%= webhook_event.payload %>"></div></td></tr>
-      <tr>
-        <td class="text-start">
-          <table class="table table-sm table-dark table-striped">
-            <tbody>
-            <% webhook_event.payload.each do |key, val| %>
-              <tr class="table-secondary">
-                <td class="w-1"/>
-                <td class="w-25">
-                  <%= key %>
-                </td>
-                <td class="text-align-left">
-                  <%= val %>
-                </td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
-        </td>
-        <td>
-          <%= webhook_event.created_at.to_formatted_s(:db) %>
-        </td>
-      </tr>
-    <% end %>
-  <% end %>
-  </tbody>
-</table>
+<div id='event-wrapper'>
+  <%= render 'webhook_events', subscriber: @subscriber %>
+</div>

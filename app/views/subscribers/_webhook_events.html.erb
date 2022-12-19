@@ -1,0 +1,7 @@
+<div id="webhook-events">
+  <% if subscriber.webhook_events.empty? %>
+    Waiting on your first webhook event
+  <% else %>
+    <%= render subscriber.webhook_events.order('created_at DESC') %>
+  <% end %>
+</div>
