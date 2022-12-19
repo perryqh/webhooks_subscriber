@@ -1,0 +1,9 @@
+
+<div class="container text-center mt-5">
+<%= form_with model: @subscriber, class: 'row' do |form| %>
+  <div class="col">
+  <%= form.text_field :name, class: 'form-control text-center', placeholder: 'Subscription name' %>
+  <%= form.submit class: 'btn btn-primary mt-3' %>
+  </div>
+<% end %>
+</div>

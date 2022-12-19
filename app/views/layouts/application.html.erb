@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Webhooks Subscribers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body class="text-center bg-light">
+<div class="header w-100 p-3 bg-dark text-white">
+  <h1>Webhook Subscribers</h1>
+  <p class="lead">Inspect and test HTTP requests.</p>
+</div>
+<main class="container-fluid clearfix">
+  <%= yield %>
+</main>
+
+</body>
+</html>
