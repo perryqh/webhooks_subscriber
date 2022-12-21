@@ -11,8 +11,7 @@ export default class extends Controller {
             falseColor: '#ff8080',
             nullColor: 'cornflowerblue'
         };
-        let json = this.payloadJsonTarget.dataset.actualJson
-        var beauty = Beautify(json, customColorOptions)
-        this.payloadJsonTarget.innerHTML = beauty
+        const json = this.payloadJsonTarget.dataset.actualJson
+        this.payloadJsonTarget.innerHTML = Beautify(json, customColorOptions)
     }
 }

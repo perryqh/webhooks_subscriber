@@ -1,9 +1,17 @@
-
-<div class="container text-center mt-5">
-<%= form_with model: @subscriber, class: 'row' do |form| %>
-  <div class="col">
-  <%= form.text_field :name, class: 'form-control text-center', placeholder: 'Subscription name' %>
-  <%= form.submit class: 'btn btn-primary mt-3' %>
-  </div>
-<% end %>
+<div class="container mt-5">
+  <%= form_with model: @subscriber, class: 'row' do |form| %>
+    <div class="row">
+      <div class="col-auto text-start">
+        <label for="subscriber-name-tf" class="form-label">Subscriber name</label>
+        <%= form.text_field :name, id: 'subscriber-name-tf', class: 'form-control text-start' %>
+        <div class="form-text">Create a Subscriber to get a URL, which can be used to receive webhook notifications.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-auto">
+        <%= form.submit class: 'btn btn-primary mt-3' %>
+      </div>
+    </div>
+  <% end %>
 </div>
