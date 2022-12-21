@@ -4,6 +4,6 @@ export default class extends Controller {
         let noEvents = document.getElementById('no-webhook-events-message') || false
         if(noEvents) {
             noEvents.remove()
-        } 
+        }
     }
 }
