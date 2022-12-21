@@ -27,5 +27,10 @@
 </div>
 <div id='event-wrapper' class="m-5 text-start">
   <h5>Requests</h5>
+  <% if @subscriber.webhook_events.empty? %>
+    <div id='no-webhook-events-message' class='text-info'>
+      <p class="text-secondary">Still waiting on the first request</p>
+    </div>
+  <% end %>
   <%= render 'webhook_events', subscriber: @subscriber %>
 </div>

@@ -1,4 +1,4 @@
-<div id="webhook_events" class="container">
+<div id="webhook_events">
   <%= turbo_stream_from subscriber, :webhook_events %>
 
   <%= render subscriber.webhook_events.order('created_at DESC') %>
