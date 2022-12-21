@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Creates subscribers to receive requests
 class SubscribersController < ApplicationController
   layout 'application'
 

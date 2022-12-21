@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Stores requests made to webhook_events#create
 class WebhookEvent < ApplicationRecord
   after_create_commit :stream
 

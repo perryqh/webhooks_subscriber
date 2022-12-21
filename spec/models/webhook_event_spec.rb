@@ -9,25 +9,32 @@ RSpec.describe WebhookEvent, type: :model do
 
   describe 'turbo broadcast' do
     context 'when creating' do
+      before do
+        allow(Turbo::StreamsChannel).to receive(:broadcast_prepend_later_to)
+      end
+
       it 'broadcasts event' do
-        allow(webhook_event).to receive(:broadcast_prepend_later_to)
         webhook_event.save!
-        expect(webhook_event)
+        expect(Turbo::StreamsChannel)
           .to have_received(:broadcast_prepend_later_to)
           .with(subscriber,
                 :webhook_events,
+                locals: { highlight: true,
+                          webhook_event: },
                 target: :webhook_events,
-                locals: { highlight: true })
+                partial: 'webhook_events/webhook_event')
       end
     end
 
     context 'when updating' do
-      before { webhook_event.save! }
+      before do
+        webhook_event.save!
+        allow(Turbo::StreamsChannel).to receive(:broadcast_prepend_later_to)
+      end
 
       it 'does not broadcast event' do
-        allow(webhook_event).to receive(:broadcast_prepend_later_to)
         webhook_event.update!(payload: { name: 'event-name' })
-        expect(webhook_event).not_to have_received(:broadcast_prepend_later_to)
+        expect(Turbo::StreamsChannel).not_to have_received(:broadcast_prepend_later_to)
       end
     end
   end

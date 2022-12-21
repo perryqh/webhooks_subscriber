@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Api
+  # API to create webhook-events
   class WebhookEventsController < ActionController::Base
     protect_from_forgery with: :null_session
 
