@@ -1,7 +1,11 @@
 <small class="text-muted">
   <%= time_tag webhook_event.created_at, local_time(webhook_event.created_at, format: '%Y-%M-%d %H:%M.%S %Z') %>
 </small>
-
-<pre>
+<div>
+  <small class="text-muted">
+    <%= webhook_event.remote_ip %>
+  </small>
+</div>
+<pre class="code-pre">
     <div data-beautifyjson-target="payloadJson" data-actual-json="<%= JSON.pretty_generate(webhook_event.payload) %>"/>
 </pre>
