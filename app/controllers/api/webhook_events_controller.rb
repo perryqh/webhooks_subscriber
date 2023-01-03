@@ -13,7 +13,8 @@ module Api
     private
 
     def webhook_event_params
-      { payload: }
+      { payload:,
+        remote_ip: request.remote_ip }
     end
 
     def payload

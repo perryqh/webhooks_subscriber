@@ -43,5 +43,11 @@ RSpec.describe Api::WebhookEventsController, type: :controller do
       expect(WebhookEvent.last.payload)
         .to eq(params.except(:subscriber_id).deep_stringify_keys)
     end
+
+    it 'records remote_ip' do
+      poster
+      expect(WebhookEvent.last.remote_ip)
+        .to eq('0.0.0.0')
+    end
   end
 end
