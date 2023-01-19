@@ -22,4 +22,15 @@ describe 'Routes', type: :routing do
       )
     end
   end
+
+  context 'when subscriber webhook_event' do
+    it 'destroys' do
+      expect(delete('/subscribers/32/webhook_events/ignored')).to route_to(
+        'controller' => 'webhook_events',
+        'action' => 'destroy',
+        'subscriber_id' => '32',
+        'id' => 'ignored'
+      )
+    end
+  end
 end

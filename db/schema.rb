@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,25 +12,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_03_210017) do
+ActiveRecord::Schema[7.0].define(version: 20_230_103_210_017) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
-  enable_extension "plpgsql"
+  enable_extension 'pgcrypto'
+  enable_extension 'plpgsql'
 
-  create_table "subscribers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_subscribers_on_name"
+  create_table 'subscribers', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.string 'name', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['name'], name: 'index_subscribers_on_name'
   end
 
-  create_table "webhook_events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "subscriber_id"
-    t.jsonb "payload"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "remote_ip"
-    t.index ["subscriber_id"], name: "index_webhook_events_on_subscriber_id"
+  create_table 'webhook_events', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.uuid 'subscriber_id'
+    t.jsonb 'payload'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'remote_ip'
+    t.index ['subscriber_id'], name: 'index_webhook_events_on_subscriber_id'
   end
-
 end

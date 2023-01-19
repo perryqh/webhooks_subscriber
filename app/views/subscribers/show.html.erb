@@ -31,6 +31,8 @@
     <div id='no-webhook-events-message' class='text-info'>
       <p class="text-secondary">Still waiting on the first request</p>
     </div>
+  <% else %>
+    <%= link_to "Delete All Requests", subscriber_webhook_event_path(@subscriber, id: :all_events), data: { "turbo-method": :delete }, class: 'btn btn-danger' %>
   <% end %>
   <%= render 'webhook_events', subscriber: @subscriber %>
 </div>
