@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col">
+    <h1>Subscriptions</h1>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Callback URL</th>
+        <th>Created</th>
+        <th>Last Event</th>
+        <th>Num Events</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @subscribers.length.zero? %>
+      <tr>
+        <td colspan="5">
+          None
+        </td>
+      </tr>
+      <% else %>
+        <% @subscribers.each do |subscriber| %>
+        <tr>
+          <td>
+            <%= link_to subscriber.name, subscriber_path(subscriber) %>
+          </td>
+          <td>
+            <%= webhooks_create_url(subscriber_id: subscriber.id) %>
+          </td>
+          <td>
+            <%= local_date_time subscriber.created_at %>
+          </td>
+          <td>
+            <%= local_date_time subscriber.last_webhook_event&.created_at %>
+          </td>
+          <td>
+            <%= subscriber.webhook_events_count %>
+          </td>
+          <td>
+            <%= link_to "Delete", subscriber_path(subscriber), data: { "turbo-method": :delete }, class: 'btn btn-danger' %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="container mt-5">
+      <%= form_with model: @subscriber, class: 'row' do |form| %>
+        <div class="row">
+          <div class="col-auto text-start">
+            <label for="subscriber-name-tf" class="form-label">Subscriber name</label>
+            <%= form.text_field :name, id: 'subscriber-name-tf', class: 'form-control text-start' %>
+            <div class="form-text">Create a Subscriber to get a URL, which can be used to receive webhook notifications.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-auto">
+            <%= form.submit class: 'btn btn-primary mt-3' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

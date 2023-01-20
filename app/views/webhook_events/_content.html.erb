@@ -1,5 +1,5 @@
 <small class="text-muted">
-  <%= time_tag webhook_event.created_at, local_time(webhook_event.created_at, format: '%Y-%m-%d %H:%M.%S %Z') %>
+  <%= local_date_time webhook_event.created_at %>
 </small>
 <div>
   <small class="text-muted">

@@ -4,7 +4,7 @@
 class WebhookEvent < ApplicationRecord
   after_create_commit :stream
 
-  belongs_to :subscriber
+  belongs_to :subscriber, counter_cache: true
 
   private
 

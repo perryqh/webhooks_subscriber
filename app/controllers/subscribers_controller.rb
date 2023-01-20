@@ -3,11 +3,17 @@
 # Creates subscribers to receive requests
 class SubscribersController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_subscriber, only: %i[show destroy]
 
   layout 'application'
 
   def new
     @subscriber = Subscriber.new
+  end
+
+  def index
+    @subscriber = Subscriber.new
+    @subscribers = current_user.subscribers
   end
 
   def create
@@ -20,13 +26,20 @@ class SubscribersController < ApplicationController
     end
   end
 
-  def show
-    @subscriber = Subscriber.find_by!(id: params[:id])
+  def show; end
+
+  def destroy
+    @subscriber.destroy!
+    redirect_to subscribers_path
   end
 
   private
 
   def subscriber_params
     params.require(:subscriber).permit(:name)
+  end
+
+  def load_subscriber
+    @subscriber = Subscriber.find_by!(id: params[:id])
   end
 end

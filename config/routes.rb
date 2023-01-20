@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/api/webhook_events/:subscriber_id', to: 'api/webhook_events#create', as: 'webhooks_create',
                                              defaults: { format: :json }
 
-  resources :subscribers, only: %i[new create show] do
+  resources :subscribers, only: %i[new create show index destroy] do
     resources :webhook_events, only: :destroy
   end
   root 'home#index'
