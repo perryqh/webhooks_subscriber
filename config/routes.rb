@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :subscribers, only: %i[new create show] do
     resources :webhook_events, only: :destroy
   end
-  root 'subscribers#new'
+  root 'home#index'
 end

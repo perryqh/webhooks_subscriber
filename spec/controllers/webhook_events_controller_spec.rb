@@ -6,6 +6,9 @@ RSpec.describe WebhookEventsController, type: :controller do
   describe 'DELETE destroy' do
     subject(:delete_all_events) { delete :destroy, params: { subscriber_id:, id: :ignored } }
 
+    before { sign_in(user) }
+
+    let(:user) { create(:user) }
     let(:subscriber_id) { subscriber.id }
     let(:subscriber) { webhook_event.subscriber }
     let!(:webhook_event) do

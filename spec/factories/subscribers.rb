@@ -5,5 +5,6 @@ FactoryBot.define do
     sequence :name do |n|
       "name#{n}"
     end
+    user
   end
 end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class WebhookEventsController < ApplicationController
+  before_action :authenticate_user!
+
   layout 'application'
 
   def destroy

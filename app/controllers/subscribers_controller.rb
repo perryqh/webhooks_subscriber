@@ -2,6 +2,8 @@
 
 # Creates subscribers to receive requests
 class SubscribersController < ApplicationController
+  before_action :authenticate_user!
+
   layout 'application'
 
   def new
@@ -9,7 +11,7 @@ class SubscribersController < ApplicationController
   end
 
   def create
-    @subscriber = Subscriber.new(subscriber_params)
+    @subscriber = current_user.subscribers.build(subscriber_params)
     if @subscriber.save
       flash[:notice] = 'Successfully created Subscriber!'
       redirect_to subscriber_path(@subscriber)
