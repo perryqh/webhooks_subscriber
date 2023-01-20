@@ -6,7 +6,7 @@ class WebhookEventsController < ApplicationController
   layout 'application'
 
   def destroy
-    @subscriber = Subscriber.find_by!(id: params[:subscriber_id])
+    @subscriber = current_user.subscribers.find_by!(id: params[:subscriber_id])
     @subscriber.webhook_events.destroy_all
     redirect_to subscriber_path(@subscriber)
   end

@@ -61,7 +61,7 @@ RSpec.describe SubscribersController, type: :controller do
     end
 
     it 'creates a subscriber' do
-      expect { post_create }.to change { Subscriber.count }.by(1)
+      expect { post_create }.to change(Subscriber, :count).by(1)
     end
   end
 end
