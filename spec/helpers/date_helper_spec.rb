@@ -9,7 +9,7 @@ describe DateHelper do
     context 'with date_time' do
       let(:date_time) { Time.current }
 
-      it { is_expected.to be_present}
+      it { is_expected.to be_present }
     end
 
     context 'with nil' do

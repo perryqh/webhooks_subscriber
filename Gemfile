@@ -79,5 +79,6 @@ end
 gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth'
+gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
