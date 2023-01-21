@@ -4,17 +4,23 @@
       <%= link_to "Log in", new_session_path(resource_name) %>
     </div>
   <% end %>
-  
+  <!--  github.jpg-->
   <%- if devise_mapping.omniauthable? %>
+    <div class="col">
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <div class="col">
+      <% image_path = provider == :google_oauth2 ? image_path("btn_google_signin_dark_normal_web.png") : '' %>
+
         <%= form_for "Login",
                      url: omniauth_authorize_path(resource_name, provider),
                      method: :post,
                      data: { turbo: "false" } do |f| %>
-          <%= f.submit "Login", type: "image", src: image_path("btn_google_signin_dark_normal_web.png") %>
+          <% if provider == :google_oauth2 %>
+            <%= f.submit "Login", type: "image", src: image_path %>
+          <% else %>
+            <button class="display-7 p-2"><i class="fa fa-github"> Sign in with Github </i></button>
+          <% end %>
         <% end %>
-      </div>
     <% end %>
+    </div>
   <% end %>
 </div>
