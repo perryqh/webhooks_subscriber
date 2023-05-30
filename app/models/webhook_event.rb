@@ -9,9 +9,9 @@ class WebhookEvent < ApplicationRecord
   private
 
   def stream
-    broadcast_prepend_later_to(subscriber,
-                               :webhook_events,
-                               target: :webhook_events,
-                               locals: { highlight: true })
+    broadcast_prepend_to(subscriber,
+                         :webhook_events,
+                         target: :webhook_events,
+                         locals: { highlight: true })
   end
 end
