@@ -3,7 +3,7 @@ databases:
 
 services:
   - type: redis
-    name: cache
+    name: webhook-subscriber-cache
     ipAllowList: [ ] # only allow internal connections
     plan: free # optional (defaults to starter)
     maxmemoryPolicy: allkeys-lfu
